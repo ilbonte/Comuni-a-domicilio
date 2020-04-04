@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
 
 export interface CompanyItem {
@@ -15,7 +16,8 @@ export interface CompanyItem {
     imageUrl: string;
 }
 
-const DEFAULT_IMG_URL = 'https://drive.google.com/uc?id=1-S4If6GDhzchCvEeoS_J3QI-i6r-NPXB';
+const DEFAULT_IMG_URL =
+    'https://drive.google.com/uc?id=1-S4If6GDhzchCvEeoS_J3QI-i6r-NPXB';
 
 export default class Company extends React.PureComponent<CompanyItem> {
     private renderPhoneNumber(): React.ReactNode {
@@ -88,19 +90,36 @@ export default class Company extends React.PureComponent<CompanyItem> {
 
     private renderIsOpen(): React.ReactNode {
         if (this.props.isOpen) {
-            return <Badge variant="success">oggi aperto</Badge>;
+            return (
+                <OverlayTrigger
+                    overlay={<Tooltip id="aperto">Oggi aperto</Tooltip>}
+                >
+                    <i className="fa fa-circle text-success"></i>
+                </OverlayTrigger>
+            );
         }
-        return <Badge variant="danger">oggi chiuso</Badge>;
+        return (
+            <OverlayTrigger
+                overlay={<Tooltip id="chiuso">Oggi chiuso</Tooltip>}
+            >
+                <i className="fa fa-circle text-danger"></i>
+            </OverlayTrigger>
+        );
     }
 
     public render(): React.ReactNode {
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title className="mb-0">{this.props.name} {this.renderIsOpen()}</Card.Title>
+                    <Card.Title className="mb-0">
+                        {this.renderIsOpen()} {this.props.name}
+                    </Card.Title>
                 </Card.Body>
                 <Card.Img src={this.props.imageUrl ?? DEFAULT_IMG_URL} />
-                <div className="w-100 text-right mt-n3 pr-2" style={{zIndex: 666}}>
+                <div
+                    className="w-100 text-right mt-n3 pr-2"
+                    style={{ zIndex: 666 }}
+                >
                     {this.renderPhoneNumber()}
                     {this.renderWebsite()}
                 </div>

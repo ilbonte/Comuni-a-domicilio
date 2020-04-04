@@ -1,12 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
 import React from 'react';
-import CookieConsent, { Cookies } from 'react-cookie-consent';
-
-import Company, { CompanyItem } from './Company';
+import CookieConsent from 'react-cookie-consent';
+import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import CardColumns from 'react-bootstrap/CardColumns';
-import Container from 'react-bootstrap/Container';
+
+import Company, { CompanyItem } from './Company';
+import LinkToForm from './LinkToForm';
 import Hero from './Hero';
 
 const COMPANIES_URL: string =
@@ -93,6 +94,7 @@ export default class App extends React.Component<{}, CompaniesState> {
     private renderCompanies(): React.ReactNode {
         return (
             <CardColumns>
+                <LinkToForm />
                 {this.state.companies
                     .filter(
                         (company: CompanyItem) =>

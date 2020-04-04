@@ -2,33 +2,14 @@ import axios, { AxiosResponse } from 'axios';
 import React from 'react';
 import CookieConsent from 'react-cookie-consent';
 import Container from 'react-bootstrap/Container';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import CardColumns from 'react-bootstrap/CardColumns';
 
-import Company, { CompanyItem } from './Company';
-import LinkToForm from './LinkToForm';
+import { CompanyItem } from './Company';
+import Categories from './Categories';
+import Companies from './Companies';
 import Hero from './Hero';
 
 const COMPANIES_URL: string =
     'https://script.google.com/macros/s/AKfycbyOiJExZRtg3ZSF3_7U8t5uCH2CEWTxSvYLjVyRMhskCwluOTDd/exec';
-
-const categories = [
-    'Ristorante e Pizzerie',
-    'Bar e Panini',
-    'Pasticcerie e Gelaterie',
-    'Fiori e Giardinaggio',
-    'Cartoleria',
-    'Macellerie, Pescherie e Salumerie',
-    'Supermercati e Alimentari',
-    'Panifici',
-    'Librerie, Cartolibrerie e Fumetterie',
-    'Farmacie ed Erboristerie',
-    'Articoli per la casa',
-    'Bevande ed alcolici',
-    'Giocattoli',
-    'Tabacchi',
-];
 
 export interface CompaniesState {
     companies: CompanyItem[];
@@ -66,48 +47,6 @@ export default class App extends React.Component<{}, CompaniesState> {
             );
     }
 
-    private renderFilter(): React.ReactNode {
-        return (
-            <DropdownButton
-                id="dropdown-basic-button"
-                title={
-                    <>
-                        <i className="fas fa-fw fa-filter"></i>{' '}
-                        {this.state.category ?? 'Tutto'}
-                    </>
-                }
-                variant="light"
-                onSelect={(category: string | null) =>
-                    this.setState({ category })
-                }
-            >
-                <Dropdown.Item eventKey={undefined}>Tutto</Dropdown.Item>
-                {categories.map((category: string) => (
-                    <Dropdown.Item eventKey={category}>
-                        {category}
-                    </Dropdown.Item>
-                ))}
-            </DropdownButton>
-        );
-    }
-
-    private renderCompanies(): React.ReactNode {
-        return (
-            <CardColumns>
-                <LinkToForm />
-                {this.state.companies
-                    .filter(
-                        (company: CompanyItem) =>
-                            this.state.category == null ||
-                            this.state.category === company.category
-                    )
-                    .map((company: CompanyItem) => (
-                        <Company key={company.name} {...company} />
-                    ))}
-            </CardColumns>
-        );
-    }
-
     private renderContent(): React.ReactNode {
         const { isLoading, error } = this.state;
 
@@ -121,9 +60,22 @@ export default class App extends React.Component<{}, CompaniesState> {
 
         return (
             <div>
-                <div className="text-right">{this.renderFilter()}</div>
+                <div className="text-right">
+                    <Categories
+                        category={this.state.category}
+                        onSelect={(category: string | null) =>
+                            this.setState({ category })
+                        }
+                    />
+                </div>
                 <hr />
-                {this.renderCompanies()}
+                <Companies
+                    companies={this.state.companies.filter(
+                        (company: CompanyItem) =>
+                            this.state.category == null ||
+                            this.state.category === company.category
+                    )}
+                />
             </div>
         );
     }

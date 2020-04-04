@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export default class LinkToForm extends React.PureComponent {
     public render(): React.ReactNode {
@@ -11,7 +11,7 @@ export default class LinkToForm extends React.PureComponent {
                         <Button
                             href="https://docs.google.com/forms/d/e/1FAIpQLSdci-4udC2gyI2wZcZcsa8nEStyQ0Ga0PuzjtPADBYtlKOsrg/viewform"
                             block
-                            variant="danger"
+                            variant="secondary"
                         >
                             Inserisci la mia attività!
                         </Button>

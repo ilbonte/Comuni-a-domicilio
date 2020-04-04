@@ -1,15 +1,50 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-export default class Categories extends React.PureComponent {
+export interface CategoriesProps {
+    category: string | null;
+    onSelect: (category: string | null) => void;
+}
+
+export default class Categories extends React.PureComponent<CategoriesProps> {
+    static values: string[] = [
+        'Ristorante e Pizzerie',
+        'Bar e Panini',
+        'Pasticcerie e Gelaterie',
+        'Fiori e Giardinaggio',
+        'Cartoleria',
+        'Macellerie, Pescherie e Salumerie',
+        'Supermercati e Alimentari',
+        'Panifici',
+        'Librerie, Cartolibrerie e Fumetterie',
+        'Farmacie ed Erboristerie',
+        'Articoli per la casa',
+        'Bevande ed alcolici',
+        'Giocattoli',
+        'Tabacchi',
+    ];
+    
     public render(): React.ReactNode {
         return (
-            <Container className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" >
-                <h1 className="display-4">Castiglione a Domicilio</h1>
-                <p className="lead">
-                    attività che consegnano direttamente a casa tua
-                </p>
-            </Container>
+            <DropdownButton
+                id="dropdown-basic-button"
+                title={
+                    <>
+                        <i className="fas fa-fw fa-filter"></i>{' '}
+                        {this.props.category ?? 'Tutto'}
+                    </>
+                }
+                variant="light"
+                onSelect={this.props.onSelect}
+            >
+                <Dropdown.Item eventKey={undefined}>Tutto</Dropdown.Item>
+                {Categories.values.map((category: string) => (
+                    <Dropdown.Item eventKey={category}>
+                        {category}
+                    </Dropdown.Item>
+                ))}
+            </DropdownButton>
         );
     }
 }

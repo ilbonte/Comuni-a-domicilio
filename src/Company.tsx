@@ -100,7 +100,7 @@ export default class Company extends React.PureComponent<CompanyItem> {
                     <Card.Title className="mb-0">{this.props.name} {this.renderIsOpen()}</Card.Title>
                 </Card.Body>
                 <Card.Img src={this.props.imageUrl ?? DEFAULT_IMG_URL} />
-                <div className="w-100 text-right mt-n3 pr-2">
+                <div className="w-100 text-right mt-n3 pr-2" style={{zIndex: 666}}>
                     {this.renderPhoneNumber()}
                     {this.renderWebsite()}
                 </div>

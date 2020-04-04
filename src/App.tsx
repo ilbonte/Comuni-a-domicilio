@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import React from 'react';
+import CookieConsent, { Cookies } from 'react-cookie-consent';
 
 import Company, { CompanyItem } from './Company';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -130,6 +131,14 @@ export default class App extends React.Component<{}, CompaniesState> {
             <div className="App">
                 <Hero />
                 <Container>{this.renderContent()}</Container>
+                <CookieConsent
+                    buttonText="Ok!"
+                    style={{ backgroundColor: '#343a40' }}
+                    buttonStyle={{ backgroundColor: 'gold' }}
+                >
+                    Il sito utilizza cookie per migliorarne l'esperienza di
+                    navigazione.
+                </CookieConsent>
             </div>
         );
     }

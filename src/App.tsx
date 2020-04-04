@@ -90,7 +90,7 @@ export default class App extends React.Component<{}, CompaniesState> {
                 <Hero />
                 <Container>
                     {this.renderContent()}
-                    <footer className="border-top pt-4 mt-4 mb-4">
+                    <footer className="border-top pt-4 mt-4 mb-4" id="info">
                         <p>
                             Castiglione a Domicilio nasce per aiutare le
                             attività locali a superare la crisi e le

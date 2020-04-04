@@ -7,7 +7,7 @@ export default class Hero extends React.PureComponent {
             <Container className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" >
                 <h1 className="display-4">Castiglione a Domicilio</h1>
                 <p className="lead">
-                    attività che consegnano direttamente a casa tua
+                Le attività che consegnano direttamente a casa tua. <a href="#info"> Qui maggiori info </a>
                 </p>
             </Container>
         );

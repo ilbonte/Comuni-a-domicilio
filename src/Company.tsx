@@ -139,7 +139,7 @@ export default class Company extends React.PureComponent<CompanyItem> {
                     <Card.Text>
                         <dl className="mb-0">
                             <>
-                                <dt>Cateogria</dt>
+                                <dt>Categoria</dt>
                                 <dd>{this.props.category}</dd>
                             </>
                             {this.renderDeliveredGoods()}

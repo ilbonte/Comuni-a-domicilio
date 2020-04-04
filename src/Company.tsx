@@ -64,6 +64,18 @@ export default class Company extends React.PureComponent<CompanyItem> {
         );
     }
 
+    private renderWrittenPhoneNumber(): React.ReactNode {
+        if (this.props.phoneNumber == null) {
+            return null;
+        }
+        return (
+            <>
+                <dt>Numero di telefono: </dt>
+                <dd> <a href={`tel:${this.props.phoneNumber}`}>{this.props.phoneNumber}</a></dd>
+            </>
+        );
+    }
+
     private renderClosedDays(): React.ReactNode {
         if (this.props.closedDays == null) {
             return null;
@@ -131,6 +143,7 @@ export default class Company extends React.PureComponent<CompanyItem> {
                                 <dd>{this.props.category}</dd>
                             </>
                             {this.renderDeliveredGoods()}
+                            {this.renderWrittenPhoneNumber()}
                             {this.renderClosedDays()}
                             {this.renderNotes()}
                         </dl>

@@ -24,21 +24,23 @@ export default class Categories extends React.PureComponent<CategoriesProps> {
         'Giocattoli',
         'Tabacchi',
     ];
-    
+
     public render(): React.ReactNode {
         return (
             <DropdownButton
                 id="dropdown-basic-button"
                 title={
                     <>
-                        <i className="fas fa-fw fa-filter"></i>{' '}
-                        {this.props.category ?? 'Tutto'}
+                        Categoria: {this.props.category ?? 'Tutte le cateogrie'}
                     </>
                 }
                 variant="light"
+                className="w-100"
                 onSelect={this.props.onSelect}
             >
-                <Dropdown.Item eventKey={undefined}>Tutto</Dropdown.Item>
+                <Dropdown.Item eventKey={undefined}>
+                    Tutte le categorie
+                </Dropdown.Item>
                 {Categories.values.map((category: string) => (
                     <Dropdown.Item eventKey={category}>
                         {category}

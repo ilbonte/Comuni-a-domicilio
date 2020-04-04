@@ -11,7 +11,7 @@ import Companies from './Companies';
 import Hero from './Hero';
 
 const COMPANIES_URL: string =
-    'https://script.google.com/macros/s/AKfycbyOiJExZRtg3ZSF3_7U8t5uCH2CEWTxSvYLjVyRMhskCwluOTDd/exec';
+    'https://script.google.com/macros/s/AKfycbwSF_AVsfQfNCczzjoVa6o2hT-TUAgiYswrjDxqEd3Ah8EYMBw/exec';
 
 export interface CompaniesState {
     companies: CompanyItem[];

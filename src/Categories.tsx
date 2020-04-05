@@ -13,7 +13,6 @@ export default class Categories extends React.PureComponent<CategoriesProps> {
         'Bar e Panini',
         'Pasticcerie e Gelaterie',
         'Fiori e Giardinaggio',
-        'Cartoleria',
         'Macellerie, Pescherie e Salumerie',
         'Supermercati e Alimentari',
         'Panifici',

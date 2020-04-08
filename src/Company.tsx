@@ -70,8 +70,8 @@ export default class Company extends React.PureComponent<CompanyItem> {
         }
         return (
             <>
-                <dt>Numero di telefono: </dt>
-                <dd> <a href={`tel:${this.props.phoneNumber}`}>{this.props.phoneNumber}</a></dd>
+                <dt>Numero di telefono</dt>
+                <dd><a href={`tel:${this.props.phoneNumber}`}>{this.props.phoneNumber}</a></dd>
             </>
         );
     }

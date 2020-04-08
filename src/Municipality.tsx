@@ -17,7 +17,8 @@ export interface MunicipalityItem {
     id: string;
     slug: string;
     name: string;
-    province: string;
+    province: string,
+    formUrl: string;
 }
 
 export interface CompaniesState {
@@ -99,6 +100,7 @@ export default class Municipality extends React.Component<RouteComponentProps<{s
                 </Row>
                 <hr />
                 <Companies
+                    formUrl={this.state.municipality?.formUrl || ""}
                     companies={this.state.companies.filter(
                         (company: CompanyItem) =>
                             this.state.category == null ||

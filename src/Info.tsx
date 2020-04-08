@@ -31,8 +31,8 @@ export default class Info extends React.PureComponent {
                             posso sostenere l'iniziativa?
                         </strong>
                         <br />
-                        Spargi la voce! Manda il sito a tutte le famiglie di
-                        Castiglione che conosci.
+                        Spargi la voce! Manda il sito a tutte le persone che
+                        conosci del tuo comune.
                     </p>
 
                     <p>

@@ -48,9 +48,7 @@ export default class Info extends React.PureComponent {
                     </p>
 
                     <p>
-                        <strong>
-                            Vuoi aggiungere un altro comune?
-                        </strong>
+                        <strong>Vuoi aggiungere un altro comune?</strong>
                         <br />
                         Certo, contattaci a{' '}
                         <a href="mailto:marco.musi@outlook.com">
@@ -67,7 +65,7 @@ export default class Info extends React.PureComponent {
                     </p>
                 </div>
 
-                <Footer/>
+                <Footer />
             </Container>
         );
     }

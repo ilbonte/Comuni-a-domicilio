@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export interface LinkToFormProps {
-    formUrl: string,
+    formUrl: string;
 }
 
 export default class LinkToForm extends React.PureComponent<LinkToFormProps> {
@@ -13,7 +13,7 @@ export default class LinkToForm extends React.PureComponent<LinkToFormProps> {
                 <Card.Body>
                     <Card.Text>
                         <Button
-                            as="a" 
+                            as="a"
                             href={this.props.formUrl}
                             block
                             variant="secondary"

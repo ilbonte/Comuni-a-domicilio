@@ -17,7 +17,7 @@ export interface MunicipalityItem {
     id: string;
     slug: string;
     name: string;
-    province: string,
+    province: string;
     formUrl: string;
 }
 
@@ -29,11 +29,14 @@ export interface CompaniesState {
     error: { message: string } | null;
 }
 
-export default class Municipality extends React.Component<RouteComponentProps<{slug: string}>, CompaniesState> {
+export default class Municipality extends React.Component<
+    RouteComponentProps<{ slug: string }>,
+    CompaniesState
+> {
     static contextType = MunicipalitiesContext;
     context!: React.ContextType<typeof MunicipalitiesContext>;
 
-    constructor(props: RouteComponentProps<{slug: string}>) {
+    constructor(props: RouteComponentProps<{ slug: string }>) {
         super(props);
         this.state = {
             municipality: null,
@@ -49,7 +52,9 @@ export default class Municipality extends React.Component<RouteComponentProps<{s
     }
 
     public componentDidMount() {
-        let maybe = this.context.filter((m: MunicipalityItem) => m.slug === this.props.match.params.slug);
+        let maybe = this.context.filter(
+            (m: MunicipalityItem) => m.slug === this.props.match.params.slug
+        );
         if (maybe.length === 0) {
             throw new Error();
         }
@@ -100,7 +105,7 @@ export default class Municipality extends React.Component<RouteComponentProps<{s
                 </Row>
                 <hr />
                 <Companies
-                    formUrl={this.state.municipality?.formUrl || ""}
+                    formUrl={this.state.municipality?.formUrl ?? ''}
                     companies={this.state.companies.filter(
                         (company: CompanyItem) =>
                             this.state.category == null ||
@@ -114,14 +119,16 @@ export default class Municipality extends React.Component<RouteComponentProps<{s
     public render(): React.ReactNode {
         return (
             <>
-                <Container className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" >
-                    <h1 className="display-4">{this.state.municipality?.name ?? '???'}</h1>
+                <Container className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 className="display-4">
+                        {this.state.municipality?.name ?? '???'}
+                    </h1>
                     <Lead />
                 </Container>
 
                 <Container>
                     {this.renderContent()}
-                    <Footer/>
+                    <Footer />
                 </Container>
 
                 <CookieConsent

@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import CardColumns from 'react-bootstrap/CardColumns';
-import { MunicipalityItem } from './Municipality';
 import Card from 'react-bootstrap/Card';
+
+import { MunicipalityItem } from './Municipality';
 import { MunicipalitiesContext } from './Context';
 import { Lead } from './Lead';
 import { Footer } from './Footer';

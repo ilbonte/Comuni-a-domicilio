@@ -14,7 +14,7 @@ export default class Homepage extends React.PureComponent {
     context!: React.ContextType<typeof MunicipalitiesContext>;
 
     private getMapUrl({ name, province }: MunicipalityItem): string {
-        return `https://maps.google.com/maps?q=${name},${province}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+        return `https://maps.google.com/maps?q=${name},${province}&t=&z=13&ie=UTF8&iwloc=&output=svembed`;
     }
 
     private renderMunicipality(

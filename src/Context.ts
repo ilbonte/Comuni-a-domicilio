@@ -9,13 +9,6 @@ export const MunicipalitiesContext = React.createContext([
         formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdci-4udC2gyI2wZcZcsa8nEStyQ0Ga0PuzjtPADBYtlKOsrg/viewform',
     },
     {
-        id: 'AKfycbzqpH3Ljir5HtI_Mn8Iy0K6QUGvUdEuqNJpq-3d3Q',
-        slug: 'grosseto',
-        name: 'Grosseto',
-        province: 'Grosseto',
-        formUrl: 'https://forms.gle/WXNCBpcdvXxs8Ut49',
-    },
-    {
         id: 'AKfycbxA4oCL0500HHUFLMV8EvgVpGLtuJc0HgdqMT4MvCxBrB0ePlg',
         slug: 'misano-adriatico',
         name: 'Misano Adriatico',

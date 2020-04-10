@@ -29,4 +29,18 @@ export const MunicipalitiesContext = React.createContext([
         province: 'Bologna',
         formUrl: 'https://forms.gle/JHAEgi73udZqtAhy7',
     },
+    {
+        id: 'AKfycbxpS8dAfpGgBYOk3s2b3H2FYS_kSGZhLbWcUOL2',
+        slug: 'ala',
+        name: 'Ala',
+        province: 'Trento',
+        formUrl: 'https://forms.gle/Y42UJ36DmUT2KeNL8',
+    },
+    {
+        id: 'AKfycbxCA_RA9-Zq4cKn4uNij9_sMF_JPky_0w9PYRXQwg',
+        slug: 'aldeno',
+        name: 'Aldeno',
+        province: 'Trento',
+        formUrl: 'https://forms.gle/zUt3hgkjYPpr25EJ9',
+    },
 ]);

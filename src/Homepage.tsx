@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import CardColumns from 'react-bootstrap/CardColumns';
-import Card from 'react-bootstrap/Card';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import {Typeahead} from 'react-bootstrap-typeahead';
 
-import { MunicipalityItem } from './Municipality';
 import { MunicipalitiesContext } from './Context';
 import { Lead } from './Lead';
 import { Footer } from './Footer';
@@ -12,39 +11,6 @@ import { Footer } from './Footer';
 export default class Homepage extends React.PureComponent {
     static contextType = MunicipalitiesContext;
     context!: React.ContextType<typeof MunicipalitiesContext>;
-
-    private getMapUrl({ name, province }: MunicipalityItem): string {
-        return `https://maps.google.com/maps?q=${name},${province}&t=&z=13&ie=UTF8&iwloc=&output=svembed`;
-    }
-
-    private renderMunicipality(
-        municipality: MunicipalityItem
-    ): React.ReactNode {
-        return (
-            <Card className="text-left" key={municipality.id}>
-                <iframe
-                    className="w-100 "
-                    src={this.getMapUrl(municipality)}
-                    frameBorder={0}
-                    allowFullScreen
-                    style={{ height: 300 }}
-                />
-
-                <Card.Body>
-                    <Card.Title className="mb-0">
-                        <Link
-                            to={`/municipality/${municipality.slug}`}
-                            className="text-dark"
-                        >
-                            {municipality.name}
-                        </Link>
-                        <br />
-                        <small>{municipality.province}</small>
-                    </Card.Title>
-                </Card.Body>
-            </Card>
-        );
-    }
 
     public render(): React.ReactNode {
         return (
@@ -55,12 +21,41 @@ export default class Homepage extends React.PureComponent {
                 </h1>
                 <Lead />
 
-                <CardColumns className="mt-5">
-                    {this.context.map(this.renderMunicipality.bind(this))}
-                </CardColumns>
+                <Jumbotron>
+                    <h1>Trova il tuo comune!</h1>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Prepend>
+                        <InputGroup.Text>
+                        https://comuniadomicilio.com/#/
+                        </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Typeahead
+                            id="municipally"
+                            placeholder="Cerca una città..."
+                            onChange={(selected:Array<SelectedMunicipality>) => {
+                                console.log(selected);
+                                handleRedirect(selected[0])
+                            }}
+                            options={this.context.map(item => { return {"id": item.slug, "label":item.name}})}
+                        />
+                    </InputGroup>
+
+                </Jumbotron>
+
+
+
 
                 <Footer />
             </Container>
         );
     }
+}
+
+interface SelectedMunicipality{
+    id: string,
+    label: string
+}
+
+ function handleRedirect(selected:SelectedMunicipality){
+  window.location.assign(`/#/municipality/${selected.id}`);
 }

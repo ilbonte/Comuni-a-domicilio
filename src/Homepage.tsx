@@ -40,6 +40,18 @@ export default class Homepage extends React.PureComponent {
                         />
                     </InputGroup>
 
+                </Jumbotron>         
+                
+                <Jumbotron>
+                    <h1>Il tuo comune non c'è leggi qui!</h1>
+                    <p>
+                        Stiamo cercando un volontario per portare il progetto anche nel tuo comune.
+                        Gestirai tu le informazioni e sarai riportato sulla pagina relativa.
+
+                        Scrivici a <a href="mailto:marco.musi@outlook.com ">marco.musi@outlook.com </a> se vuoi aiutarci.
+
+                    </p>
+
                 </Jumbotron>
 
 

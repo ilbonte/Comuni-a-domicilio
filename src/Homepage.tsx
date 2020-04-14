@@ -7,12 +7,35 @@ import {Typeahead} from 'react-bootstrap-typeahead';
 import { MunicipalitiesContext } from './Context';
 import { Lead } from './Lead';
 import { Footer } from './Footer';
+import { Redirect } from 'react-router-dom';
 
-export default class Homepage extends React.PureComponent {
+
+export interface HomepageState {
+    toMunicipality: string
+}
+
+interface SelectedMunicipality{
+    id: string,
+    label: string
+}
+
+
+export default class Homepage extends React.Component<any,HomepageState> {
     static contextType = MunicipalitiesContext;
     context!: React.ContextType<typeof MunicipalitiesContext>;
 
+
+    constructor(props: React.PureComponent) {
+        super(props);
+        this.state = {
+            toMunicipality: ""
+        };
+    }
+
     public render(): React.ReactNode {
+        if (this.state.toMunicipality) {
+            return <Redirect to={`/municipality/${this.state.toMunicipality}`} />
+          }
         return (
             <Container className="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 className="display-4">
@@ -34,7 +57,7 @@ export default class Homepage extends React.PureComponent {
                             placeholder="Cerca una città..."
                             onChange={(selected:Array<SelectedMunicipality>) => {
                                 console.log(selected);
-                                handleRedirect(selected[0])
+                                this.setState({toMunicipality:selected[0].id})
                             }}
                             options={this.context.map(item => { return {"id": item.slug, "label":item.name}})}
                         />
@@ -43,7 +66,7 @@ export default class Homepage extends React.PureComponent {
                 </Jumbotron>         
                 
                 <Jumbotron>
-                    <h1>Il tuo comune non c'è leggi qui!</h1>
+                    <h1>Non c'è il tuo comune?</h1>
                     <p>
                         Stiamo cercando un volontario per portare il progetto anche nel tuo comune.
                         Gestirai tu le informazioni e sarai riportato sulla pagina relativa.
@@ -54,20 +77,8 @@ export default class Homepage extends React.PureComponent {
 
                 </Jumbotron>
 
-
-
-
                 <Footer />
             </Container>
         );
     }
-}
-
-interface SelectedMunicipality{
-    id: string,
-    label: string
-}
-
- function handleRedirect(selected:SelectedMunicipality){
-  window.location.assign(`/#/municipality/${selected.id}`);
 }

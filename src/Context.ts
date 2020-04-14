@@ -36,4 +36,11 @@ export const MunicipalitiesContext = React.createContext([
         province: 'Trento',
         formUrl: 'https://forms.gle/zUt3hgkjYPpr25EJ9',
     },
+    {
+        id: 'AKfycbz5HANK-9jOioXNO3f6mgZJm7S0S0nfvHPATXsmEg',
+        slug: 'calcinato',
+        name: 'Calcinato',
+        province: 'Brescia',
+        formUrl: '',
+    },
 ]);

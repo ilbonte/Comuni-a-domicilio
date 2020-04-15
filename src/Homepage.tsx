@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import {Typeahead} from 'react-bootstrap-typeahead';
 
@@ -8,6 +7,8 @@ import { MunicipalitiesContext } from './Context';
 import { Lead } from './Lead';
 import { Footer } from './Footer';
 import { Redirect } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 export interface HomepageState {
@@ -46,33 +47,29 @@ export default class Homepage extends React.Component<any,HomepageState> {
 
                 <Jumbotron>
                     <h1>Trova il tuo comune!</h1>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                        <InputGroup.Text>
-                        https://comuniadomicilio.com/#/
-                        </InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <Typeahead
-                            id="municipally"
-                            placeholder="Cerca una città..."
-                            onChange={(selected:Array<SelectedMunicipality>) => {
-                                console.log(selected);
-                                this.setState({toMunicipality:selected[0].id})
-                            }}
-                            options={this.context.map(item => { return {"id": item.slug, "label":item.name}})}
-                        />
-                    </InputGroup>
-
+                    <Row>
+                        <Col md={{ offset: 4, span: 4 }}>
+                            <Typeahead
+                                    id="municipally"
+                                    placeholder="Cerca una città..."
+                                    onChange={(selected:Array<SelectedMunicipality>) => {
+                                        console.log(selected);
+                                        this.setState({toMunicipality:selected[0].id})
+                                    }}
+                                    options={this.context.map(item => { return {"id": item.slug, "label":item.name}})}
+                                />
+                        </Col>
+                    </Row>
                 </Jumbotron>         
                 
                 <Jumbotron>
                     <h1>Non c'è il tuo comune?</h1>
+                    <br/>
                     <p>
                         Stiamo cercando un volontario per portare il progetto anche nel tuo comune.
                         Gestirai tu le informazioni e sarai riportato sulla pagina relativa.
 
-                        Scrivici a <a href="mailto:marco.musi@outlook.com ">marco.musi@outlook.com </a> se vuoi aiutarci.
-
+                        Scrivici a <a href="mailto:marco.musi@outlook.com ">marco.musi@outlook.com </a> se vuoi aiutarci.   
                     </p>
 
                 </Jumbotron>
